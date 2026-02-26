@@ -170,7 +170,7 @@
     document.head.appendChild(fadeStyle);
 
     // Apply to key elements
-    var fadeTargets = document.querySelectorAll('.accused__content, .accused__tagline, .jury__heading, .jury__text, .section-title, .subscribe__heading, .ep-card');
+    var fadeTargets = document.querySelectorAll('.accused__content, .accused__tagline, .jury__heading, .jury__text, .section-title, .subscribe__heading, .format-card, .timeline__card, .quote-banner__text, .evidence-room__inner');
     fadeTargets.forEach(function (el) { el.classList.add('fade-in'); });
 
     var fadeObserver = new IntersectionObserver(function (entries) {

@@ -299,9 +299,10 @@ img {
 
 .hero__kicker {
   font-family: var(--font-typewriter);
-  font-size: 0.85rem;
+  font-size: 0.95rem;
+  font-weight: 700;
   letter-spacing: 0.2em;
-  color: var(--color-gray-500);
+  color: var(--color-gray-700);
   margin-bottom: 1.5rem;
 }
 
@@ -527,15 +528,8 @@ img {
 }
 
 /* =============================================
-   EPISODES — DARK SECTION
+   SHARED SECTION HEADINGS
    ============================================= */
-.episodes {
-  background: var(--color-gray-900);
-  color: var(--color-white);
-  padding: var(--section-pad) 2rem;
-  text-align: center;
-}
-
 .section-title {
   font-family: var(--font-headline);
   font-size: clamp(3rem, 7vw, 6rem);
@@ -554,58 +548,302 @@ img {
   margin-bottom: 3rem;
 }
 
-.episodes__grid {
+/* =============================================
+   THE EVIDENCE ROOM
+   ============================================= */
+.evidence-room {
+  background: var(--color-gray-900);
+  color: var(--color-white);
+  padding: var(--section-pad) 2rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.evidence-room__classified {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-15deg);
+  font-family: var(--font-headline);
+  font-size: clamp(6rem, 18vw, 14rem);
+  letter-spacing: 0.15em;
+  color: rgba(255, 255, 255, 0.025);
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+  line-height: 1;
+}
+
+.evidence-room__inner {
+  position: relative;
+  z-index: 1;
+  max-width: 700px;
+  margin: 0 auto 3.5rem;
+}
+
+.evidence-room__tagline {
+  font-family: var(--font-headline);
+  font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+  letter-spacing: 0.06em;
+  color: var(--color-white);
+  margin-bottom: 1.5rem;
+  line-height: 1.3;
+}
+
+.evidence-room__body {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  line-height: 1.85;
+  color: var(--color-gray-300);
+  max-width: 600px;
+  margin: 0 auto 2rem;
+}
+
+.evidence-room__stamp {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2rem;
+  margin-top: 2.5rem;
+}
+
+.stamp__line {
+  display: block;
+  width: 60px;
+  height: 1px;
+  background: var(--color-gray-700);
+}
+
+.stamp__text {
+  font-family: var(--font-typewriter);
+  font-size: 0.8rem;
+  letter-spacing: 0.25em;
+  color: var(--color-gray-500);
+}
+
+/* Format Cards */
+.format-cards {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 1px;
   max-width: var(--max-width);
   margin: 0 auto;
   background: var(--color-gray-700);
   border: 1px solid var(--color-gray-700);
+  position: relative;
+  z-index: 1;
 }
 
-.ep-card {
+.format-card {
   background: var(--color-gray-900);
-  padding: 2rem 1.8rem;
-  text-align: left;
-  position: relative;
+  padding: 2.5rem 2rem;
+  text-align: center;
   transition: background-color 0.3s ease;
 }
 
-.ep-card:hover {
+.format-card:hover {
   background: var(--color-black);
 }
 
-.ep-card__num {
-  font-family: var(--font-headline);
-  font-size: 3rem;
-  color: var(--color-red);
-  opacity: 0.2;
-  position: absolute;
-  top: 0.8rem;
-  right: 1.2rem;
-  line-height: 1;
-  transition: opacity 0.3s ease;
+.format-card__icon {
+  display: block;
+  font-size: 2.2rem;
+  margin-bottom: 1.2rem;
+  filter: grayscale(0.5);
 }
 
-.ep-card:hover .ep-card__num {
-  opacity: 0.5;
-}
-
-.ep-card__title {
+.format-card__title {
   font-family: var(--font-headline);
   font-size: 1.3rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.8rem;
   color: var(--color-white);
 }
 
-.ep-card__desc {
+.format-card__desc {
   font-family: var(--font-body);
   font-size: 0.8rem;
   color: var(--color-gray-500);
-  line-height: 1.5;
+  line-height: 1.6;
+}
+
+/* =============================================
+   HISTORICAL TIMELINE
+   ============================================= */
+.timeline {
+  background: var(--color-black);
+  color: var(--color-white);
+  padding: var(--section-pad) 2rem;
+  text-align: center;
+}
+
+.timeline .section-title {
+  margin-bottom: 0.3rem;
+}
+
+.timeline .section-subtitle {
+  margin-bottom: 3.5rem;
+}
+
+.timeline__track {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+.timeline__line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  background: linear-gradient(180deg, transparent, var(--color-gray-700) 10%, var(--color-gray-700) 90%, transparent);
+  transform: translateX(-1px);
+}
+
+.timeline__item {
+  position: relative;
+  width: 50%;
+  padding: 0 2.5rem 3rem;
+}
+
+.timeline__item--left {
+  text-align: right;
+  padding-right: 3.5rem;
+  margin-left: 0;
+}
+
+.timeline__item--right {
+  text-align: left;
+  padding-left: 3.5rem;
+  margin-left: 50%;
+}
+
+.timeline__dot {
+  position: absolute;
+  top: 0.3rem;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--color-gray-700);
+  border: 3px solid var(--color-gray-900);
+  z-index: 2;
+}
+
+.timeline__item--left .timeline__dot {
+  right: -7px;
+}
+
+.timeline__item--right .timeline__dot {
+  left: -7px;
+}
+
+.timeline__dot--fiction {
+  background: var(--color-gray-500);
+  border-color: var(--color-gray-900);
+}
+
+.timeline__dot--red {
+  background: var(--color-red);
+  border-color: var(--color-gray-900);
+  box-shadow: 0 0 12px rgba(192, 57, 43, 0.5);
+}
+
+.timeline__card {
+  transition: transform 0.3s ease;
+}
+
+.timeline__card:hover {
+  transform: translateY(-3px);
+}
+
+.timeline__date {
+  display: block;
+  font-family: var(--font-typewriter);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  color: var(--color-gray-500);
+  margin-bottom: 0.4rem;
+}
+
+.timeline__event {
+  font-family: var(--font-headline);
+  font-size: 1.2rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-white);
+  margin-bottom: 0.5rem;
+}
+
+.timeline__desc {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  line-height: 1.65;
+  color: var(--color-gray-500);
+}
+
+/* Fiction/highlight variants */
+.timeline__card--fiction .timeline__date {
+  color: var(--color-gray-300);
+  font-style: italic;
+}
+
+.timeline__card--fiction .timeline__event {
+  color: var(--color-gray-300);
+}
+
+.timeline__card--highlight .timeline__date {
+  color: var(--color-red);
+}
+
+.timeline__card--highlight .timeline__event {
+  color: var(--color-red-bright);
+}
+
+.timeline__card--highlight .timeline__desc {
+  color: var(--color-gray-300);
+}
+
+/* =============================================
+   CINEMATIC QUOTE BANNER
+   ============================================= */
+.quote-banner {
+  background: var(--color-gray-900);
+  padding: clamp(4rem, 10vh, 8rem) 2rem;
+  text-align: center;
+  position: relative;
+}
+
+.quote-banner__inner {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.quote-banner__accent {
+  width: 60px;
+  height: 3px;
+  background: var(--color-red);
+  margin: 0 auto 2.5rem;
+}
+
+.quote-banner__text {
+  font-family: var(--font-headline);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  line-height: 1.25;
+  color: var(--color-white);
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.quote-banner__highlight {
+  color: var(--color-red);
 }
 
 /* =============================================
@@ -677,7 +915,7 @@ img {
 }
 
 /* =============================================
-   SUBSCRIBE — SPLIT SECTION
+   JURY SUMMONS — COURT DOCUMENT FORM
    ============================================= */
 .subscribe {
   display: grid;
@@ -698,76 +936,276 @@ img {
   filter: grayscale(100%) contrast(1.1);
 }
 
-.subscribe__form-container {
+.subscribe__form-container.summons {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: clamp(2rem, 5vw, 4rem);
-  background: var(--color-white);
+  padding: clamp(2rem, 4vw, 3.5rem);
+  background: #f5f0e8;
+  background-image:
+    radial-gradient(ellipse at 20% 50%, rgba(210, 180, 140, 0.15) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(180, 160, 130, 0.1) 0%, transparent 40%);
+  position: relative;
+  overflow: hidden;
 }
 
-.subscribe__heading {
-  font-family: var(--font-headline);
-  font-size: 2.5rem;
-  font-weight: 400;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  margin-bottom: 1rem;
-  color: var(--color-black);
+/* Subtle aged paper edge effect */
+.subscribe__form-container.summons::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to right, rgba(139, 119, 90, 0.08) 0%, transparent 3%, transparent 97%, rgba(139, 119, 90, 0.08) 100%),
+    linear-gradient(to bottom, rgba(139, 119, 90, 0.05) 0%, transparent 5%, transparent 95%, rgba(139, 119, 90, 0.08) 100%);
+  pointer-events: none;
 }
 
-.subscribe__text {
-  font-family: var(--font-body);
-  font-size: 0.85rem;
-  line-height: 1.7;
-  color: var(--color-gray-500);
-  margin-bottom: 2rem;
+/* --- Summons Header --- */
+.summons__header {
+  text-align: center;
+  margin-bottom: 1.8rem;
 }
 
-.form-field {
-  margin-bottom: 1rem;
+.summons__court-name {
+  font-family: var(--font-typewriter);
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  color: #5a4e3a;
+  margin-bottom: 0.8rem;
+  line-height: 1.4;
 }
 
-.form-input {
+.summons__divider-double {
   width: 100%;
-  padding: 1rem;
-  font-family: var(--font-ui);
-  font-size: 0.85rem;
-  letter-spacing: 0.1em;
-  color: var(--color-black);
-  background: var(--color-off-white);
-  border: none;
-  border-bottom: 2px solid var(--color-gray-100);
-  transition: border-color 0.3s ease;
+  height: 5px;
+  border-top: 2px solid #8b7756;
+  border-bottom: 2px solid #8b7756;
+  margin: 0.6rem 0;
 }
 
-.form-input::placeholder {
-  color: var(--color-gray-300);
+.summons__title {
+  font-family: var(--font-headline);
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  color: #2c2416;
+  margin: 0.3rem 0;
+  line-height: 1;
+}
+
+.summons__case-info {
+  margin-top: 1rem;
+}
+
+.summons__case-info p {
+  font-family: var(--font-typewriter);
+  font-size: 0.78rem;
+  color: #5a4e3a;
+  letter-spacing: 0.08em;
+  line-height: 1.8;
+}
+
+.summons__label-inline {
+  font-weight: 700;
+  color: #3a3020;
+}
+
+/* --- Summons Body --- */
+.summons__body {
+  margin-bottom: 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.summons__body p {
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  line-height: 1.85;
+  color: #4a4030;
+}
+
+.summons__body em {
+  font-style: italic;
+  color: #2c2416;
+}
+
+/* --- Summons Form Fields --- */
+.summons__form {
+  position: relative;
+  z-index: 1;
+}
+
+.summons__field {
+  margin-bottom: 1.5rem;
+}
+
+.summons__label {
+  display: block;
+  font-family: var(--font-typewriter);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: #3a3020;
+  margin-bottom: 0.5rem;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
 }
 
-.form-input:focus {
+.summons__optional {
+  font-weight: 400;
+  color: #8b7756;
+  letter-spacing: 0.05em;
+  text-transform: none;
+}
+
+.summons__input {
+  width: 100%;
+  padding: 0.7rem 0.2rem;
+  font-family: var(--font-typewriter);
+  font-size: 0.88rem;
+  color: #2c2416;
+  background: transparent;
+  border: none;
+  border-bottom: 1.5px solid #8b7756;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+  letter-spacing: 0.03em;
+}
+
+.summons__input::placeholder {
+  color: #b5a68a;
+  font-style: italic;
+  letter-spacing: 0.02em;
+}
+
+.summons__input:focus {
   outline: none;
   border-bottom-color: var(--color-red);
-  background: var(--color-white);
+  background: rgba(255, 255, 255, 0.3);
 }
 
-.form-textarea {
+.summons__textarea {
   resize: vertical;
-  min-height: 100px;
+  min-height: 70px;
+  border: 1.5px solid #8b7756;
+  padding: 0.7rem;
+  margin-top: 0.2rem;
 }
 
-.form-success {
-  text-align: center;
-  padding: 2rem;
+.summons__textarea:focus {
+  border-color: var(--color-red);
 }
 
-.success-msg {
+/* --- Submit Area with Seal --- */
+.summons__footer-section {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+  padding-top: 1.2rem;
+}
+
+.summons__seal {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: 3px double #8b7756;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  opacity: 0.6;
+}
+
+.summons__seal-inner {
+  font-size: 2rem;
+  color: #8b7756;
+  line-height: 1;
+}
+
+.summons__submit-area {
+  flex: 1;
+}
+
+.summons__submit-btn {
+  display: block;
+  width: 100%;
+  padding: 0.9rem 2rem;
   font-family: var(--font-headline);
-  font-size: 1.5rem;
+  font-size: 1.1rem;
+  letter-spacing: 0.15em;
+  color: #f5f0e8;
+  background: #3a3020;
+  border: 2px solid #3a3020;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+}
+
+.summons__submit-btn:hover,
+.summons__submit-btn:focus {
+  background: var(--color-red-dark);
+  border-color: var(--color-red-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(150, 45, 34, 0.3);
+}
+
+.summons__notice {
+  font-family: var(--font-typewriter);
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  color: #8b7756;
+  text-align: center;
+  margin-top: 0.7rem;
+  line-height: 1.5;
+}
+
+/* --- Success State --- */
+.summons__success {
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+.summons__success-stamp {
+  font-family: var(--font-headline);
+  font-size: 3.5rem;
+  letter-spacing: 0.2em;
   color: var(--color-red);
-  letter-spacing: 0.1em;
+  border: 4px solid var(--color-red);
+  display: inline-block;
+  padding: 0.3rem 1.5rem;
+  transform: rotate(-5deg);
+  margin-bottom: 1rem;
+  opacity: 0.85;
+}
+
+.summons__success-msg {
+  font-family: var(--font-typewriter);
+  font-size: 0.78rem;
+  color: #5a4e3a;
+  line-height: 1.7;
+  letter-spacing: 0.05em;
+}
+
+/* --- Document Footer --- */
+.summons__doc-footer {
+  margin-top: 1.8rem;
+  position: relative;
+  z-index: 1;
+}
+
+.summons__divider-single {
+  width: 100%;
+  height: 1px;
+  background: #8b7756;
+  margin-bottom: 0.8rem;
+}
+
+.summons__clerk {
+  font-family: var(--font-typewriter);
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  color: #8b7756;
+  text-align: center;
+  line-height: 1.5;
 }
 
 /* =============================================
@@ -952,8 +1390,28 @@ img {
     padding: 2rem 1.5rem;
   }
 
-  .episodes__grid {
+  .format-cards {
     grid-template-columns: 1fr;
+  }
+
+  .timeline__line {
+    left: 20px;
+  }
+
+  .timeline__item,
+  .timeline__item--left,
+  .timeline__item--right {
+    width: 100%;
+    margin-left: 0;
+    text-align: left;
+    padding-left: 50px;
+    padding-right: 1rem;
+  }
+
+  .timeline__item--left .timeline__dot,
+  .timeline__item--right .timeline__dot {
+    left: 13px;
+    right: auto;
   }
 
   .footer__inner {
