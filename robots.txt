@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://thepeoplevsoswald.com/sitemap.xml
