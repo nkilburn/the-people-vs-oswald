@@ -134,13 +134,12 @@ body.kit-revealed {
     height: 22%;
     background: url('envelope_texture.png') center top/cover no-repeat;
     border-radius: 3px 3px 0 0;
-    transform-origin: top center;
-    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1) 1.2s;
+    transform-origin: bottom center;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1) 1.4s;
     z-index: 3;
     box-shadow:
         0 2px 6px rgba(0, 0, 0, 0.15),
         inset 0 -1px 3px rgba(0, 0, 0, 0.1);
-    backface-visibility: hidden;
 }
 
 .envelope__flap::before {
@@ -163,7 +162,7 @@ body.kit-revealed {
 }
 
 .envelope.opening .envelope__flap {
-    transform: rotateX(-180deg);
+    transform: rotateX(170deg);
 }
 
 /* --- STAMPS & MARKINGS --- */
@@ -263,6 +262,12 @@ body.kit-revealed {
     transform: translate(-50%, -50%);
     z-index: 10;
     cursor: pointer;
+    transition: opacity 0.5s ease 1.0s;
+}
+
+.envelope.opening .closure {
+    opacity: 0;
+    pointer-events: none;
 }
 
 .closure__disc {
