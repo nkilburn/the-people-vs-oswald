@@ -95,6 +95,11 @@ body.kit-revealed {
     transform-style: preserve-3d;
     cursor: default;
     animation: envelopeEntrance 1s ease-out;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.envelope.opening {
+    transform: translateY(25%);
 }
 
 @keyframes envelopeEntrance {
@@ -252,7 +257,7 @@ body.kit-revealed {
 /* --- BUTTON & STRING CLOSURE (positioned at top of envelope) --- */
 .closure {
     position: absolute;
-    top: 14%;
+    top: 17%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 10;
@@ -327,8 +332,8 @@ body.kit-revealed {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 140px;
-    height: 160px;
+    width: 100px;
+    height: 110px;
     z-index: 2;
     pointer-events: none;
 }
@@ -338,23 +343,23 @@ body.kit-revealed {
     stroke: var(--mk-string-red);
     stroke-width: 2;
     stroke-linecap: round;
-    stroke-dasharray: 600;
+    stroke-dasharray: 800;
     stroke-dashoffset: 0;
-    transition: stroke-dashoffset 1.2s ease-in-out;
+    transition: stroke-dashoffset 1.4s ease-in-out;
 }
 
 .envelope.opening .string-path {
-    stroke-dashoffset: 600;
+    stroke-dashoffset: 800;
 }
 
-/* Second disc (on the flap) */
+/* Second disc (on the flap, sits right at the flap/body seam) */
 .closure__disc-top {
     position: absolute;
-    top: -70px;
+    top: -42px;
     left: 50%;
     transform: translateX(-50%);
-    width: 32px;
-    height: 32px;
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
     background: radial-gradient(circle at 40% 35%, var(--mk-manila-light) 0%, var(--mk-manila-dark) 80%);
     border: 2px solid var(--mk-manila-dark);

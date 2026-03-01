@@ -35,7 +35,7 @@
                 body.classList.add('kit-revealed');
             }, 300);
 
-        }, 2800);
+        }, 3200);
     });
 
     // --- KEYBOARD ACCESSIBILITY ---
