@@ -120,32 +120,32 @@ body.kit-revealed {
     pointer-events: none;
 }
 
-/* --- ENVELOPE FLAP --- */
+/* --- ENVELOPE FLAP (hidden by default, animates on open) --- */
 .envelope__flap {
     position: absolute;
     top: -2px;
     left: -1px;
     right: -1px;
     height: 45%;
-    background: var(--mk-manila);
+    background: url('envelope_texture.png') center top/cover no-repeat;
     clip-path: polygon(0 100%, 50% 15%, 100% 100%);
     transform-origin: top center;
-    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
     z-index: 2;
-    background-image:
-        linear-gradient(180deg, var(--mk-manila-dark) 0%, var(--mk-manila) 40%, var(--mk-manila-light) 100%);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    pointer-events: none;
 }
 
 .envelope__flap::after {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0.1) 0%, transparent 60%);
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.15) 0%, transparent 60%);
     clip-path: inherit;
 }
 
 .envelope.opening .envelope__flap {
+    opacity: 1;
     transform: rotateX(-180deg);
 }
 
