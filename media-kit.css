@@ -84,8 +84,8 @@ body.kit-revealed {
 /* --- ENVELOPE BODY --- */
 .envelope {
     position: relative;
-    width: min(700px, 90vw);
-    height: min(500px, 65vh);
+    width: min(420px, 85vw);
+    height: min(600px, 85vh);
     background: url('envelope_texture.png') center/cover no-repeat;
     border-radius: 4px;
     box-shadow:
@@ -120,32 +120,43 @@ body.kit-revealed {
     pointer-events: none;
 }
 
-/* --- ENVELOPE FLAP (hidden by default, animates on open) --- */
+/* --- ENVELOPE FLAP (wide rectangle, connected to top edge) --- */
 .envelope__flap {
     position: absolute;
-    top: -2px;
-    left: -1px;
-    right: -1px;
-    height: 45%;
+    top: 0;
+    left: 2.5%;
+    width: 95%;
+    height: 22%;
     background: url('envelope_texture.png') center top/cover no-repeat;
-    clip-path: polygon(0 100%, 50% 15%, 100% 100%);
+    border-radius: 3px 3px 0 0;
     transform-origin: top center;
-    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
-    z-index: 2;
-    opacity: 0;
-    pointer-events: none;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1) 1.2s;
+    z-index: 5;
+    box-shadow:
+        0 2px 6px rgba(0, 0, 0, 0.15),
+        inset 0 -1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.envelope__flap::before {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 10%;
+    right: 10%;
+    height: 6px;
+    background: rgba(0, 0, 0, 0.08);
+    border-radius: 0 0 3px 3px;
 }
 
 .envelope__flap::after {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0.15) 0%, transparent 60%);
-    clip-path: inherit;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.05) 0%, rgba(0, 0, 0, 0.12) 100%);
+    border-radius: inherit;
 }
 
 .envelope.opening .envelope__flap {
-    opacity: 1;
     transform: rotateX(-180deg);
 }
 
@@ -238,10 +249,10 @@ body.kit-revealed {
     letter-spacing: 0.1em;
 }
 
-/* --- BUTTON & STRING CLOSURE --- */
+/* --- BUTTON & STRING CLOSURE (positioned at top of envelope) --- */
 .closure {
     position: absolute;
-    top: 46%;
+    top: 14%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 10;
@@ -316,8 +327,8 @@ body.kit-revealed {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 200px;
-    height: 120px;
+    width: 140px;
+    height: 160px;
     z-index: 2;
     pointer-events: none;
 }
@@ -325,32 +336,32 @@ body.kit-revealed {
 .string-path {
     fill: none;
     stroke: var(--mk-string-red);
-    stroke-width: 2.5;
+    stroke-width: 2;
     stroke-linecap: round;
-    stroke-dasharray: 300;
+    stroke-dasharray: 600;
     stroke-dashoffset: 0;
-    transition: stroke-dashoffset 1s ease-in-out;
+    transition: stroke-dashoffset 1.2s ease-in-out;
 }
 
 .envelope.opening .string-path {
-    stroke-dashoffset: 300;
+    stroke-dashoffset: 600;
 }
 
-/* Second disc (top of envelope) */
+/* Second disc (on the flap) */
 .closure__disc-top {
     position: absolute;
-    top: -55px;
+    top: -70px;
     left: 50%;
     transform: translateX(-50%);
-    width: 36px;
-    height: 36px;
+    width: 32px;
+    height: 32px;
     border-radius: 50%;
     background: radial-gradient(circle at 40% 35%, var(--mk-manila-light) 0%, var(--mk-manila-dark) 80%);
     border: 2px solid var(--mk-manila-dark);
     box-shadow:
         0 2px 4px rgba(0, 0, 0, 0.3),
         inset 0 1px 2px rgba(255, 255, 255, 0.2);
-    z-index: 1;
+    z-index: 6;
 }
 
 .closure__disc-top::after {
@@ -358,8 +369,8 @@ body.kit-revealed {
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 6px;
-    height: 6px;
+    width: 5px;
+    height: 5px;
     border-radius: 50%;
     background: var(--mk-manila-dark);
     transform: translate(-50%, -50%);
