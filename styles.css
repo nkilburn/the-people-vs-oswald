@@ -914,6 +914,22 @@ img {
   margin-bottom: 1.2rem;
 }
 
+.jury__coffee a {
+  display: inline-block;
+}
+
+.jury__coffee a img {
+  height: 50px;
+  width: auto;
+  border-radius: 8px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.jury__coffee a img:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(255, 221, 0, 0.3);
+}
+
 /* =============================================
    JURY SUMMONS — COURT DOCUMENT FORM
    ============================================= */

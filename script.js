@@ -87,12 +87,26 @@
 
       document.getElementById('sub-email').setCustomValidity('');
 
-      // Simulate submission
-      form.hidden = true;
-      successEl.hidden = false;
-      successEl.focus();
-
-      console.log('Subscription:', { name: name, email: email });
+      // Submit to Netlify Forms
+      var formData = new FormData(form);
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(formData).toString()
+      })
+      .then(function (response) {
+        if (response.ok) {
+          form.hidden = true;
+          successEl.hidden = false;
+          successEl.focus();
+        } else {
+          alert('There was an issue filing your summons. Please try again.');
+        }
+      })
+      .catch(function (error) {
+        console.error('Form submission error:', error);
+        alert('There was an issue filing your summons. Please try again.');
+      });
     });
   }
 

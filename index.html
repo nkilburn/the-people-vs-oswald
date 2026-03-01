@@ -377,13 +377,15 @@
         <p class="jury__text">Support this production and become a juror. Patreon members get early access to episodes,
           behind-the-scenes research notes, exclusive evidence exhibits, and the right to cast their verdict before
           anyone else.</p>
-        <a href="https://www.patreon.com/" class="btn btn--red btn--large" id="jury-cta-btn" target="_blank"
-          rel="noopener noreferrer">SIT ON THE JURY</a>
-        <p class="jury__price">Join via Patreon &mdash; from $3/month</p>
+        <a href="https://www.patreon.com/cw/PeopleVsOswald" class="btn btn--red btn--large" id="jury-cta-btn"
+          target="_blank" rel="noopener noreferrer">SIT ON THE JURY</a>
+        <p class="jury__price">Join via Patreon &mdash; from as little as $1/month</p>
         <div class="jury__coffee">
           <p>Not ready to serve? You can still support the case:</p>
-          <a href="https://www.buymeacoffee.com/" class="btn btn--outline" id="coffee-cta-btn" target="_blank"
-            rel="noopener noreferrer">&#9749; BUY ME A COFFEE</a>
+          <a href="https://www.buymeacoffee.com/peoplevsleeharveyoswald" id="coffee-cta-btn" target="_blank"
+            rel="noopener noreferrer"><img
+              src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=peoplevsleeharveyoswald&button_colour=FFDD00&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff"
+              alt="Buy Me A Coffee" /></a>
         </div>
       </div>
     </section>
@@ -418,7 +420,12 @@
         </div>
 
         <!-- The form styled as legal document fields -->
-        <form class="summons__form" id="subscribe-form" aria-label="Jury summons registration form">
+        <form class="summons__form" id="subscribe-form" aria-label="Jury summons registration form" name="jury-summons"
+          method="POST" data-netlify="true" netlify-honeypot="bot-field">
+          <input type="hidden" name="form-name" value="jury-summons">
+          <p class="sr-only" aria-hidden="true">
+            <label>Don't fill this out if you're human: <input name="bot-field"></label>
+          </p>
           <div class="summons__field">
             <label for="sub-name" class="summons__label">I. FULL LEGAL NAME OF JUROR</label>
             <input type="text" id="sub-name" name="name" class="summons__input" placeholder="Enter your full name"
