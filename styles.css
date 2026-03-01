@@ -486,7 +486,7 @@ img {
   margin-top: 0;
   position: relative;
   min-width: 280px;
-  min-height: 1.2em;
+  height: 1.5em;
   overflow: hidden;
 }
 
@@ -505,7 +505,6 @@ img {
 }
 
 .rotate-word.active {
-  position: relative;
   opacity: 1;
   transform: translateY(0);
 }
