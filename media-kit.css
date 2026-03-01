@@ -136,10 +136,11 @@ body.kit-revealed {
     border-radius: 3px 3px 0 0;
     transform-origin: top center;
     transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1) 1.2s;
-    z-index: 5;
+    z-index: 3;
     box-shadow:
         0 2px 6px rgba(0, 0, 0, 0.15),
         inset 0 -1px 3px rgba(0, 0, 0, 0.1);
+    backface-visibility: hidden;
 }
 
 .envelope__flap::before {
@@ -381,7 +382,7 @@ body.kit-revealed {
     transform: translate(-50%, -50%);
 }
 
-/* --- DOCUMENTS PEEK --- */
+/* --- DOCUMENTS PEEK (come out AFTER flap opens) --- */
 .envelope__documents {
     position: absolute;
     top: 10%;
@@ -392,9 +393,9 @@ body.kit-revealed {
     background: var(--mk-paper);
     border: 1px solid rgba(0, 0, 0, 0.1);
     box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
-    z-index: 0;
+    z-index: 4;
     opacity: 0;
-    transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1) 0.6s, opacity 0.4s ease 0.6s;
+    transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1) 2.0s, opacity 0.4s ease 2.0s;
 }
 
 .envelope.opening .envelope__documents {
