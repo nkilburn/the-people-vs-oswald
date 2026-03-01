@@ -1,5 +1,5 @@
 /* =============================================
-   MEDIA KIT — MANILA ENVELOPE & DOSSIER
+   MEDIA KIT — MANILA FILE FOLDER & DOSSIER
    The People vs. Lee Harvey Oswald
    ============================================= */
 
@@ -15,7 +15,6 @@
     --mk-red: #c0392b;
     --mk-red-dark: #962d22;
     --mk-stamp-red: rgba(192, 57, 43, 0.7);
-    --mk-string-red: #8b2500;
     --mk-desk: #1a1108;
     --font-headline: 'Bebas Neue', sans-serif;
     --font-typewriter: 'Special Elite', cursive;
@@ -50,9 +49,9 @@ body.kit-revealed {
 }
 
 /* =============================================
-   PHASE 1: THE ENVELOPE
+   PHASE 1: THE FILE FOLDER
    ============================================= */
-.envelope-scene {
+.folder-scene {
     position: fixed;
     inset: 0;
     display: flex;
@@ -61,51 +60,38 @@ body.kit-revealed {
     background: var(--mk-desk);
     z-index: 100;
     transition: opacity 0.8s ease, visibility 0.8s ease;
-    perspective: 1200px;
+    perspective: 1000px;
 }
 
-.envelope-scene.hidden {
+.folder-scene.hidden {
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
 }
 
-/* Desk surface with subtle grain */
-.envelope-scene::before {
+/* Desk surface with subtle light pool */
+.folder-scene::before {
     content: '';
     position: absolute;
     inset: 0;
     background:
-        radial-gradient(ellipse at 50% 40%, rgba(60, 40, 15, 0.3) 0%, transparent 70%),
-        linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, transparent 40%);
+        radial-gradient(ellipse at 50% 50%, rgba(80, 55, 20, 0.25) 0%, transparent 60%);
     pointer-events: none;
 }
 
-/* --- ENVELOPE BODY --- */
-.envelope {
+/* --- FOLDER WRAPPER (3D container) --- */
+.folder {
     position: relative;
-    width: min(420px, 85vw);
-    height: min(600px, 85vh);
-    background: url('envelope_texture.png') center/cover no-repeat;
-    border-radius: 4px;
-    box-shadow:
-        0 20px 60px rgba(0, 0, 0, 0.6),
-        0 5px 15px rgba(0, 0, 0, 0.4),
-        inset 0 0 80px rgba(0, 0, 0, 0.15);
+    width: min(440px, 88vw);
+    height: min(580px, 80vh);
     transform-style: preserve-3d;
-    cursor: default;
-    animation: envelopeEntrance 1s ease-out;
-    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    animation: folderEntrance 1s ease-out;
 }
 
-.envelope.opening {
-    transform: translateY(25%);
-}
-
-@keyframes envelopeEntrance {
+@keyframes folderEntrance {
     0% {
         opacity: 0;
-        transform: scale(0.9) translateY(30px);
+        transform: scale(0.92) translateY(20px);
     }
 
     100% {
@@ -114,64 +100,89 @@ body.kit-revealed {
     }
 }
 
-/* Envelope crease/texture overlay */
-.envelope::after {
+/* --- BACK PANEL (with tab) --- */
+.folder__back {
+    position: absolute;
+    inset: 0;
+    top: -30px;
+    background: url('folder_texture.png') center/cover no-repeat;
+    border-radius: 3px 3px 4px 4px;
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.6),
+        0 5px 15px rgba(0, 0, 0, 0.4);
+}
+
+/* Tab at top */
+.folder__tab {
+    position: absolute;
+    top: 0;
+    left: 20px;
+    width: 120px;
+    height: 30px;
+    background: var(--mk-manila);
+    border-radius: 4px 4px 0 0;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.folder__tab-label {
+    font-family: var(--font-typewriter);
+    font-size: 0.5rem;
+    letter-spacing: 0.15em;
+    color: var(--mk-ink-faded);
+}
+
+/* --- FRONT PANEL (opens forward) --- */
+.folder__front {
+    position: absolute;
+    top: 30px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('folder_texture.png') center bottom/cover no-repeat;
+    border-radius: 0 0 4px 4px;
+    box-shadow:
+        0 2px 8px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    transform-origin: bottom center;
+    transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 3;
+    overflow: hidden;
+}
+
+/* Subtle crease/shadow at the fold */
+.folder__front::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: rgba(0, 0, 0, 0.15);
+}
+
+/* Light overlay */
+.folder__front::after {
     content: '';
     position: absolute;
     inset: 0;
     background:
-        linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, transparent 50%, rgba(0, 0, 0, 0.08) 100%);
-    border-radius: 4px;
+        linear-gradient(180deg, rgba(255, 255, 255, 0.04) 0%, transparent 30%, rgba(0, 0, 0, 0.06) 100%);
     pointer-events: none;
 }
 
-/* --- ENVELOPE FLAP (wide rectangle, connected to top edge) --- */
-.envelope__flap {
-    position: absolute;
-    top: 0;
-    left: 2.5%;
-    width: 95%;
-    height: 22%;
-    background: url('envelope_texture.png') center top/cover no-repeat;
-    border-radius: 3px 3px 0 0;
-    transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1) 1.4s,
-        opacity 0.6s ease 2.0s;
-    z-index: 3;
-    box-shadow:
-        0 2px 6px rgba(0, 0, 0, 0.15),
-        inset 0 -1px 3px rgba(0, 0, 0, 0.1);
-}
-
-.envelope__flap::before {
-    content: '';
-    position: absolute;
-    bottom: -6px;
-    left: 10%;
-    right: 10%;
-    height: 6px;
-    background: rgba(0, 0, 0, 0.08);
-    border-radius: 0 0 3px 3px;
-}
-
-.envelope__flap::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0.05) 0%, rgba(0, 0, 0, 0.12) 100%);
-    border-radius: inherit;
-}
-
-.envelope.opening .envelope__flap {
-    transform: translateY(-105%);
-    opacity: 0;
+.folder.opening .folder__front {
+    transform: rotateX(-65deg);
 }
 
 /* --- STAMPS & MARKINGS --- */
-.envelope__stamps {
+.folder__stamps {
     position: absolute;
     inset: 0;
     pointer-events: none;
-    z-index: 1;
+    z-index: 4;
 }
 
 .stamp {
@@ -186,14 +197,14 @@ body.kit-revealed {
 }
 
 .stamp--classified {
-    top: 15%;
+    top: 18%;
     left: 8%;
     font-size: 1.4rem;
     transform: rotate(-8deg);
 }
 
 .stamp--confidential {
-    bottom: 18%;
+    bottom: 22%;
     right: 6%;
     font-size: 1rem;
     transform: rotate(4deg);
@@ -201,7 +212,7 @@ body.kit-revealed {
 }
 
 .stamp--case {
-    bottom: 12%;
+    bottom: 14%;
     left: 10%;
     font-family: var(--font-typewriter);
     font-size: 0.75rem;
@@ -213,7 +224,7 @@ body.kit-revealed {
 }
 
 .stamp--court-seal {
-    top: 18%;
+    top: 22%;
     right: 10%;
     width: 80px;
     height: 80px;
@@ -228,97 +239,85 @@ body.kit-revealed {
     color: var(--mk-ink-faded);
 }
 
-/* --- TO/FROM LABEL --- */
-.envelope__label {
+/* --- FOLDER LABEL --- */
+.folder__label {
     position: absolute;
-    bottom: 35%;
-    left: 50%;
-    transform: translateX(-50%);
-    text-align: center;
-    z-index: 1;
-}
-
-.envelope__label-to {
-    font-family: var(--font-typewriter);
-    font-size: 0.7rem;
-    color: var(--mk-ink-faded);
-    letter-spacing: 0.2em;
-    margin-bottom: 0.3rem;
-    display: block;
-    opacity: 0.6;
-}
-
-.envelope__label-name {
-    font-family: var(--font-headline);
-    font-size: 1.5rem;
-    color: var(--mk-ink);
-    letter-spacing: 0.1em;
-}
-
-/* --- BUTTON & STRING CLOSURE (positioned at top of envelope) --- */
-.closure {
-    position: absolute;
-    top: 17%;
+    top: 45%;
     left: 50%;
     transform: translate(-50%, -50%);
-    z-index: 10;
-    cursor: pointer;
-    transition: opacity 0.5s ease 1.0s;
-}
-
-.envelope.opening .closure {
-    opacity: 0;
+    text-align: center;
+    z-index: 5;
     pointer-events: none;
 }
 
-.closure__disc {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    background: radial-gradient(circle at 40% 35%, var(--mk-manila-light) 0%, var(--mk-manila-dark) 80%);
-    border: 2px solid var(--mk-manila-dark);
-    box-shadow:
-        0 2px 6px rgba(0, 0, 0, 0.3),
-        inset 0 1px 2px rgba(255, 255, 255, 0.3),
-        inset 0 -1px 2px rgba(0, 0, 0, 0.2);
-    position: relative;
-    z-index: 3;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+.folder__label-case {
+    font-family: var(--font-typewriter);
+    font-size: 0.6rem;
+    color: var(--mk-ink-faded);
+    letter-spacing: 0.2em;
+    margin-bottom: 0.5rem;
+    display: block;
+    opacity: 0.5;
 }
 
-.closure__disc::after {
-    content: '';
+.folder__label-title {
+    font-family: var(--font-headline);
+    font-size: clamp(1.4rem, 4vw, 2rem);
+    color: var(--mk-ink);
+    letter-spacing: 0.06em;
+    line-height: 1.1;
+    opacity: 0.7;
+}
+
+/* --- OPEN TRIGGER (DECLASSIFIED stamp as button) --- */
+.folder__trigger {
     position: absolute;
-    top: 50%;
+    bottom: 36%;
     left: 50%;
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: var(--mk-manila-dark);
-    transform: translate(-50%, -50%);
-    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.4);
+    transform: translate(-50%, 0) rotate(-3deg);
+    z-index: 6;
+    cursor: pointer;
+    padding: 0.6rem 2rem;
+    background: transparent;
+    border: 3px solid var(--mk-red);
+    color: var(--mk-red);
+    font-family: var(--font-headline);
+    font-size: 1.3rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    opacity: 0.85;
+    transition: all 0.3s ease;
 }
 
-.closure:hover .closure__disc {
-    transform: scale(1.08);
-    box-shadow:
-        0 4px 12px rgba(0, 0, 0, 0.4),
-        0 0 20px rgba(192, 57, 43, 0.3),
-        inset 0 1px 2px rgba(255, 255, 255, 0.3);
+.folder__trigger::before {
+    content: '★';
+    margin-right: 0.5rem;
 }
 
-.closure__hint {
+.folder__trigger::after {
+    content: '★';
+    margin-left: 0.5rem;
+}
+
+.folder__trigger:hover {
+    opacity: 1;
+    transform: translate(-50%, 0) rotate(-3deg) scale(1.05);
+    box-shadow: 0 0 20px rgba(192, 57, 43, 0.3);
+    background: rgba(192, 57, 43, 0.05);
+}
+
+.folder__trigger-hint {
     position: absolute;
-    bottom: -32px;
+    bottom: -24px;
     left: 50%;
     transform: translateX(-50%);
     font-family: var(--font-typewriter);
-    font-size: 0.65rem;
+    font-size: 0.55rem;
     color: var(--mk-manila-light);
-    letter-spacing: 0.15em;
+    letter-spacing: 0.2em;
     white-space: nowrap;
     opacity: 0;
-    animation: hintPulse 2s ease-in-out 2s infinite;
+    animation: hintPulse 2.5s ease-in-out 2s infinite;
 }
 
 @keyframes hintPulse {
@@ -329,83 +328,63 @@ body.kit-revealed {
     }
 
     50% {
-        opacity: 0.8;
+        opacity: 0.7;
     }
 }
 
-/* --- STRING SVG --- */
-.closure__string {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100px;
-    height: 110px;
-    z-index: 2;
+/* Hide trigger + stamps when opening */
+.folder.opening .folder__stamps,
+.folder.opening .folder__label,
+.folder.opening .folder__trigger {
+    opacity: 0;
+    transition: opacity 0.4s ease;
     pointer-events: none;
 }
 
-.string-path {
-    fill: none;
-    stroke: var(--mk-string-red);
-    stroke-width: 2;
-    stroke-linecap: round;
-    stroke-dasharray: 800;
-    stroke-dashoffset: 0;
-    transition: stroke-dashoffset 1.4s ease-in-out;
-}
-
-.envelope.opening .string-path {
-    stroke-dashoffset: 800;
-}
-
-/* Second disc (on the flap, sits right at the flap/body seam) */
-.closure__disc-top {
+/* --- DOCUMENTS INSIDE --- */
+.folder__documents {
     position: absolute;
-    top: -42px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    background: radial-gradient(circle at 40% 35%, var(--mk-manila-light) 0%, var(--mk-manila-dark) 80%);
-    border: 2px solid var(--mk-manila-dark);
-    box-shadow:
-        0 2px 4px rgba(0, 0, 0, 0.3),
-        inset 0 1px 2px rgba(255, 255, 255, 0.2);
-    z-index: 6;
+    top: 35px;
+    left: 5%;
+    right: 5%;
+    bottom: 5%;
+    z-index: 2;
 }
 
-.closure__disc-top::after {
-    content: '';
+.folder__doc {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 5px;
-    height: 5px;
-    border-radius: 50%;
-    background: var(--mk-manila-dark);
-    transform: translate(-50%, -50%);
-}
-
-/* --- DOCUMENTS PEEK (come out AFTER flap opens) --- */
-.envelope__documents {
-    position: absolute;
-    top: 10%;
-    left: 50%;
-    transform: translateX(-50%) translateY(0);
-    width: 85%;
-    height: 30%;
+    left: 0;
+    right: 0;
+    height: 92%;
     background: var(--mk-paper);
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
-    z-index: 4;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+    border-radius: 2px;
+    transform: translateY(0);
     opacity: 0;
-    transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1) 2.0s, opacity 0.4s ease 2.0s;
+    transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.4s ease;
 }
 
-.envelope.opening .envelope__documents {
-    transform: translateX(-50%) translateY(-120%);
+.folder__doc:nth-child(1) {
+    bottom: 0;
+    background: #eee8d5;
+    transition-delay: 0.6s;
+}
+
+.folder__doc:nth-child(2) {
+    bottom: 4px;
+    background: #f0ead8;
+    transition-delay: 0.8s;
+}
+
+.folder__doc:nth-child(3) {
+    bottom: 8px;
+    background: var(--mk-paper);
+    transition-delay: 1.0s;
+}
+
+.folder.opening .folder__doc {
+    transform: translateY(-55%);
     opacity: 1;
 }
 
@@ -951,9 +930,9 @@ body.kit-revealed {
    RESPONSIVE
    ============================================= */
 @media (max-width: 768px) {
-    .envelope {
+    .folder {
         width: 92vw;
-        height: 60vh;
+        height: 72vh;
     }
 
     .stamp--classified {
@@ -994,20 +973,9 @@ body.kit-revealed {
         display: none;
     }
 
-    .closure__disc {
-        width: 40px;
-        height: 40px;
-    }
-
-    .closure__disc-top {
-        width: 30px;
-        height: 30px;
-        top: -45px;
-    }
-
-    .closure__string {
-        width: 160px;
-        height: 100px;
+    .folder__trigger {
+        font-size: 1rem;
+        padding: 0.5rem 1.5rem;
     }
 }
 
@@ -1020,7 +988,7 @@ body.kit-revealed {
         overflow: visible;
     }
 
-    .envelope-scene {
+    .folder-scene {
         display: none !important;
     }
 

@@ -20,43 +20,49 @@
 <body>
 
     <!-- ================================
-       PHASE 1: THE ENVELOPE
+       PHASE 1: THE FILE FOLDER
        ================================ -->
-    <div class="envelope-scene" role="main" aria-label="Media kit envelope">
-        <div class="envelope">
+    <div class="folder-scene" role="main" aria-label="Media kit file folder">
+        <div class="folder">
 
-            <!-- Flap -->
-            <div class="envelope__flap"></div>
-
-            <!-- Stamps -->
-            <div class="envelope__stamps">
-                <span class="stamp stamp--classified">CLASSIFIED</span>
-                <span class="stamp stamp--confidential">CONFIDENTIAL</span>
-                <span class="stamp stamp--case">CASE NO. 65-1127</span>
-                <span class="stamp stamp--court-seal">&#9878;</span>
+            <!-- Back panel (with tab) -->
+            <div class="folder__back">
+                <div class="folder__tab">
+                    <span class="folder__tab-label">CASE 65-1127</span>
+                </div>
             </div>
 
-            <!-- Address label -->
-            <div class="envelope__label">
-                <span class="envelope__label-to">MEDIA DOSSIER FOR</span>
-                <span class="envelope__label-name">PRESS &amp; PARTNERS</span>
+            <!-- Documents inside (3 stacked sheets) -->
+            <div class="folder__documents">
+                <div class="folder__doc"></div>
+                <div class="folder__doc"></div>
+                <div class="folder__doc"></div>
             </div>
 
-            <!-- Button & String Closure -->
-            <div class="closure" role="button" tabindex="0" aria-label="Click to open the envelope">
-                <div class="closure__disc-top"></div>
-                <svg class="closure__string" viewBox="0 0 100 110" aria-hidden="true">
-                    <path class="string-path" d="M50,8 C70,8 72,18 60,28 C48,38 38,38 38,48 C38,58 48,62 60,72 C72,82 70,92 50,92
-                           C30,92 28,82 40,72 C52,62 62,58 62,48 C62,38 52,38 40,28 C28,18 30,8 50,8
-                           C70,8 72,18 60,28 C48,38 38,38 38,48 C38,58 48,62 60,72 C72,82 70,92 50,92
-                           C30,92 28,82 40,72 C52,62 62,58 62,48 C62,38 52,38 40,28 C28,18 30,8 50,8" />
-                </svg>
-                <div class="closure__disc"></div>
-                <span class="closure__hint">CLICK TO UNSEAL</span>
-            </div>
+            <!-- Front panel (opens forward) -->
+            <div class="folder__front">
 
-            <!-- Documents peeking out -->
-            <div class="envelope__documents"></div>
+                <!-- Stamps on the front -->
+                <div class="folder__stamps">
+                    <span class="stamp stamp--classified">CLASSIFIED</span>
+                    <span class="stamp stamp--confidential">CONFIDENTIAL</span>
+                    <span class="stamp stamp--case">CASE NO. 65-1127</span>
+                    <span class="stamp stamp--court-seal">&#9878;</span>
+                </div>
+
+                <!-- Folder label -->
+                <div class="folder__label">
+                    <span class="folder__label-case">MEDIA DOSSIER</span>
+                    <span class="folder__label-title">THE PEOPLE VS.<br>LEE HARVEY OSWALD</span>
+                </div>
+
+                <!-- Open trigger -->
+                <button class="folder__trigger" aria-label="Click to declassify and open the folder">
+                    DECLASSIFIED
+                    <span class="folder__trigger-hint">CLICK TO OPEN</span>
+                </button>
+
+            </div>
 
         </div>
     </div>
@@ -316,7 +322,8 @@
                     rel="noopener">Facebook</a>
                 <a href="https://www.instagram.com/oswaldpodcast2027/" class="social-link" target="_blank"
                     rel="noopener">Instagram</a>
-                <a href="https://x.com/PeepsVsOswald" class="social-link" target="_blank" rel="noopener">X (Twitter)</a>
+                <a href="https://x.com/PeepsVsOswald" class="social-link" target="_blank" rel="noopener">X
+                    (Twitter)</a>
                 <a href="https://www.patreon.com/cw/PeopleVsOswald" class="social-link" target="_blank"
                     rel="noopener">Patreon</a>
             </div>
@@ -327,7 +334,7 @@
             <div class="dossier__footer-actions">
                 <button class="dossier__btn dossier__btn--primary" id="download-pdf-btn">DOWNLOAD AS PDF</button>
                 <a href="https://thepeoplevsoswald.com" class="dossier__btn dossier__btn--outline">VISIT WEBSITE</a>
-                <button class="dossier__btn dossier__btn--outline" id="replay-btn">REPLAY ENVELOPE</button>
+                <button class="dossier__btn dossier__btn--outline" id="replay-btn">REPLAY FOLDER</button>
             </div>
             <p class="dossier__footer-notice">
                 &copy; 2025&ndash;2027 The People vs. Lee Harvey Oswald&trade; Podcast. All rights reserved.<br>
