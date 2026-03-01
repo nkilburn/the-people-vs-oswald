@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case File Not Found — The People vs. Lee Harvey Oswald</title>
+    <meta name="description"
+        content="The evidence you're looking for has been classified, moved, or may never have existed.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Special+Elite&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="icon" type="image/png" href="logo.png">
+    <style>
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --color-black: #0a0a0a;
+            --color-white: #ffffff;
+            --color-off-white: #f2f2f2;
+            --color-gray-300: #b0b0b0;
+            --color-gray-500: #6b6b6b;
+            --color-gray-700: #3a3a3a;
+            --color-gray-900: #1a1a1a;
+            --color-red: #c0392b;
+            --color-red-dark: #962d22;
+            --font-headline: 'Bebas Neue', Impact, 'Arial Narrow', sans-serif;
+            --font-body: 'Libre Baskerville', Georgia, 'Times New Roman', serif;
+            --font-typewriter: 'Special Elite', 'Courier New', Courier, monospace;
+            --font-ui: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--color-black);
+            color: var(--color-white);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Subtle radial glow */
+        body::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at center, rgba(192, 57, 43, 0.06) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        /* Background watermark */
+        .watermark {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-15deg);
+            font-family: var(--font-headline);
+            font-size: clamp(8rem, 25vw, 18rem);
+            letter-spacing: 0.15em;
+            color: rgba(255, 255, 255, 0.02);
+            white-space: nowrap;
+            pointer-events: none;
+            user-select: none;
+            line-height: 1;
+        }
+
+        .content {
+            position: relative;
+            z-index: 1;
+            max-width: 600px;
+        }
+
+        /* Case file stamp */
+        .stamp {
+            display: inline-block;
+            border: 3px solid var(--color-red);
+            padding: 0.6rem 2rem;
+            margin-bottom: 2.5rem;
+            transform: rotate(-3deg);
+        }
+
+        .stamp__text {
+            font-family: var(--font-headline);
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            letter-spacing: 0.12em;
+            color: var(--color-red);
+            line-height: 1;
+        }
+
+        .error-code {
+            font-family: var(--font-typewriter);
+            font-size: 0.8rem;
+            letter-spacing: 0.25em;
+            color: var(--color-gray-500);
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            font-family: var(--font-headline);
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            font-weight: 400;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+
+        .description {
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            line-height: 1.85;
+            color: var(--color-gray-300);
+            margin-bottom: 3rem;
+        }
+
+        .description em {
+            color: var(--color-white);
+            font-style: italic;
+        }
+
+        /* Divider */
+        .divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .divider__line {
+            width: 50px;
+            height: 1px;
+            background: var(--color-gray-700);
+        }
+
+        .divider__text {
+            font-family: var(--font-typewriter);
+            font-size: 0.7rem;
+            letter-spacing: 0.25em;
+            color: var(--color-gray-500);
+        }
+
+        /* Return button */
+        .btn {
+            display: inline-block;
+            padding: 1rem 3rem;
+            font-family: var(--font-headline);
+            font-size: 1.1rem;
+            letter-spacing: 0.12em;
+            text-decoration: none;
+            text-align: center;
+            color: var(--color-white);
+            background: var(--color-red);
+            border: none;
+            border-radius: 50px;
+            transition: all 0.25s ease;
+            line-height: 1;
+        }
+
+        .btn:hover,
+        .btn:focus {
+            background: var(--color-red-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(192, 57, 43, 0.4);
+        }
+
+        .btn:active {
+            transform: translateY(-1px);
+        }
+
+        /* Logo link */
+        .logo-link {
+            position: absolute;
+            top: 2rem;
+            left: 2rem;
+            z-index: 2;
+        }
+
+        .logo-link img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            transition: transform 0.25s ease;
+        }
+
+        .logo-link img:hover {
+            transform: scale(1.1);
+        }
+
+        /* Focus styles */
+        :focus-visible {
+            outline: 3px solid var(--color-red);
+            outline-offset: 3px;
+        }
+
+        @media (max-width: 480px) {
+            .stamp {
+                padding: 0.4rem 1.2rem;
+            }
+
+            .logo-link {
+                top: 1rem;
+                left: 1rem;
+            }
+
+            .logo-link img {
+                width: 40px;
+                height: 40px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <a href="/" class="logo-link" aria-label="Return to homepage">
+        <img src="logo.png" alt="People vs. Lee Harvey Oswald Podcast logo" width="50" height="50">
+    </a>
+
+    <div class="watermark" aria-hidden="true">CLASSIFIED</div>
+
+    <div class="content">
+        <div class="stamp" aria-hidden="true">
+            <span class="stamp__text">CASE FILE NOT FOUND</span>
+        </div>
+
+        <p class="error-code">Error 404 &mdash; Missing Evidence</p>
+
+        <h1>The evidence you&rsquo;re looking for has been classified.</h1>
+
+        <p class="description">
+            The page you requested may have been redacted, moved to a secure location,
+            or may never have existed in the official record. The <em>Clerk of the Court</em>
+            has no record of this filing.
+        </p>
+
+        <div class="divider">
+            <span class="divider__line"></span>
+            <span class="divider__text">CASE NO. 65-1127</span>
+            <span class="divider__line"></span>
+        </div>
+
+        <a href="/" class="btn">RETURN TO THE COURTROOM</a>
+    </div>
+</body>
+
+</html>
