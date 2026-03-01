@@ -1303,6 +1303,13 @@ img {
   letter-spacing: 0.1em;
 }
 
+.footer__copyright-sub {
+  font-size: 0.6rem !important;
+  color: var(--color-gray-700) !important;
+  margin-top: 0.4rem;
+  letter-spacing: 0.05em !important;
+}
+
 .footer__social {
   display: flex;
   gap: 0.75rem;
