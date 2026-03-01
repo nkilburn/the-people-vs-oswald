@@ -105,7 +105,8 @@ body.kit-revealed {
     position: absolute;
     inset: 0;
     top: -30px;
-    background: url('folder_texture.png') center/cover no-repeat;
+    background:
+        linear-gradient(135deg, var(--mk-manila-light) 0%, var(--mk-manila) 40%, var(--mk-manila-dark) 100%);
     border-radius: 3px 3px 4px 4px;
     box-shadow:
         0 20px 60px rgba(0, 0, 0, 0.6),
@@ -134,7 +135,7 @@ body.kit-revealed {
     color: var(--mk-ink-faded);
 }
 
-/* --- FRONT PANEL (opens forward) --- */
+/* --- FRONT PANEL (opens right-to-left like a real folder) --- */
 .folder__front {
     position: absolute;
     top: 30px;
@@ -146,7 +147,7 @@ body.kit-revealed {
     box-shadow:
         0 2px 8px rgba(0, 0, 0, 0.2),
         inset 0 1px 0 rgba(255, 255, 255, 0.1);
-    transform-origin: bottom center;
+    transform-origin: left center;
     transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: 3;
     overflow: hidden;
@@ -156,10 +157,10 @@ body.kit-revealed {
 .folder__front::before {
     content: '';
     position: absolute;
+    top: 0;
     bottom: 0;
     left: 0;
-    right: 0;
-    height: 4px;
+    width: 4px;
     background: rgba(0, 0, 0, 0.15);
 }
 
@@ -169,12 +170,12 @@ body.kit-revealed {
     position: absolute;
     inset: 0;
     background:
-        linear-gradient(180deg, rgba(255, 255, 255, 0.04) 0%, transparent 30%, rgba(0, 0, 0, 0.06) 100%);
+        linear-gradient(90deg, rgba(0, 0, 0, 0.06) 0%, transparent 20%, rgba(255, 255, 255, 0.04) 100%);
     pointer-events: none;
 }
 
 .folder.opening .folder__front {
-    transform: rotateX(-65deg);
+    transform: rotateY(-75deg);
 }
 
 /* --- STAMPS & MARKINGS --- */
