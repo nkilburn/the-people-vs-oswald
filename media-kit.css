@@ -134,8 +134,8 @@ body.kit-revealed {
     height: 22%;
     background: url('envelope_texture.png') center top/cover no-repeat;
     border-radius: 3px 3px 0 0;
-    transform-origin: bottom center;
-    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1) 1.4s;
+    transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1) 1.4s,
+        opacity 0.6s ease 2.0s;
     z-index: 3;
     box-shadow:
         0 2px 6px rgba(0, 0, 0, 0.15),
@@ -162,7 +162,8 @@ body.kit-revealed {
 }
 
 .envelope.opening .envelope__flap {
-    transform: rotateX(170deg);
+    transform: translateY(-105%);
+    opacity: 0;
 }
 
 /* --- STAMPS & MARKINGS --- */
