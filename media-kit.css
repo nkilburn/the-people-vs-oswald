@@ -12,11 +12,11 @@
     --mk-paper-aged: #e8dcc8;
     --mk-ink: #1a1a1a;
     --mk-ink-faded: #4a4a4a;
-    --mk-red: #c0392b;
-    --mk-red-dark: #962d22;
-    --mk-stamp-red: rgba(192, 57, 43, 0.7);
+    --mk-red: #a3392a;
+    --mk-red-dark: #7d2c20;
+    --mk-stamp-red: rgba(163, 57, 42, 0.7);
     --mk-desk: #1a1108;
-    --font-headline: 'Bebas Neue', sans-serif;
+    --font-headline: 'Bevan', Georgia, 'Times New Roman', serif;
     --font-typewriter: 'Special Elite', cursive;
     --font-body: 'Libre Baskerville', serif;
     --font-ui: 'Inter', sans-serif;
@@ -891,7 +891,7 @@ body.kit-revealed {
     text-align: center;
     cursor: pointer;
     border: none;
-    border-radius: 50px;
+    border-radius: 3px;
     transition: all 0.25s ease;
 }
 
