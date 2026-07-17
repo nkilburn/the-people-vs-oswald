@@ -458,11 +458,12 @@ img {
 }
 
 .split-board {
+  box-sizing: border-box;
   background: #000;
   padding: 8px;
   border-radius: 2px;
-  width: 90%;
-  max-width: 90%;
+  width: 100%;
+  max-width: 100%;
   margin-bottom: 2.5rem;
 }
 
@@ -483,7 +484,7 @@ img {
 
 .split-tile {
   box-sizing: border-box;
-  aspect-ratio: 2 / 3;
+  aspect-ratio: 2 / 5;
   background: #050505;
   border: 1px solid #262626;
   display: flex;
@@ -504,8 +505,8 @@ img {
   align-items: center;
   justify-content: center;
   font-family: 'Oswald', sans-serif;
-  font-weight: 500;
-  font-size: clamp(11px, 1.9vw, 16px);
+  font-weight: 700;
+  font-size: clamp(15px, 2.5vw, 21px);
   color: #f2f1ec;
   text-transform: uppercase;
   transition: transform 0.22s ease;
@@ -530,6 +531,7 @@ img {
 
 @media (max-width: 600px) {
   .split-board {
+    width: 100%;
     max-width: 100%;
   }
 }
