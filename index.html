@@ -35,7 +35,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Bevan&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Special+Elite&family=Inter:wght@300;400;500;600&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600&family=Bevan&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Special+Elite&family=Inter:wght@300;400;500;600&display=swap"
     rel="stylesheet">
   <link rel="icon" type="image/png" href="logo.png">
   <link rel="apple-touch-icon" href="logo.png">
@@ -181,20 +181,16 @@
           class="accused__photo" width="600" height="800">
       </div>
       <div class="accused__content">
-        <h2 id="accused-heading" class="accused__name">LEE HARVEY OSWALD</h2>
-        <p class="accused__tagline">
-          <span class="accused__tagline-line">I AM</span>
-          <span class="accused__tagline-highlight" id="rotating-text" aria-live="polite" aria-atomic="true">
-            <span class="rotate-word active">MISUNDERSTOOD.</span>
-            <span class="rotate-word">A HUSBAND &amp; FATHER.</span>
-            <span class="rotate-word">A RUSSIAN AGENT?</span>
-            <span class="rotate-word">A MARXIST?</span>
-            <span class="rotate-word">A CIA AGENT?</span>
-            <span class="rotate-word">JUST A PATSY?</span>
-            <span class="rotate-word">ON TRIAL.</span>
-            <span class="rotate-word">INNOCENT?</span>
-          </span>
-        </p>
+        <h2 id="accused-heading" class="accused__name sr-only">LEE HARVEY OSWALD</h2>
+        <div class="split-board" role="img" aria-label="Case status board: defendant Oswald, Lee H., departs March 1 1965, Courtroom 102, status on time">
+          <div class="split-board__row split-board__row--title" data-row="title"></div>
+          <div class="split-board__row" data-row="identity"></div>
+          <div class="split-board__row" data-row="spacer"></div>
+          <div class="split-board__row" data-row="defendant"></div>
+          <div class="split-board__row" data-row="departs"></div>
+          <div class="split-board__row" data-row="courtroom"></div>
+          <div class="split-board__row" data-row="status"></div>
+        </div>
         <div class="accused__body">
           <p>Lee Harvey Oswald remains an enigma trapped in the amber of 1963: a man of a thousand faces, most of them
             wearing a mask. To the world, he is a mosaic of irreconcilable parts: a devoted father, a radical Marxist, a

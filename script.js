@@ -152,30 +152,78 @@
   style.textContent = '.nav--scrolled .nav-pill { background: rgba(0,0,0,0.8); color: #fff; border-color: rgba(255,255,255,0.3); } .nav--scrolled .nav-pill:hover { background: rgba(255,255,255,0.15); border-color: #fff; } .nav--scrolled .nav-pill--red { background: #c0392b; border-color: #c0392b; }';
   document.head.appendChild(style);
 
-  // --- ROTATING TEXT IN "I AM" SECTION ---
-  var rotatingWords = document.querySelectorAll('#rotating-text .rotate-word');
-  if (rotatingWords.length > 0) {
-    var currentWordIndex = 0;
-    var rotateInterval = 2500; // ms between rotations
+  // --- SPLIT-FLAP BOARD ---
+  function initSplitBoard() {
+    var board = document.querySelector('.split-board');
+    if (!board) return;
 
+    var COLS = 26;
+
+    function pad(s, cols) {
+      if (cols === undefined) cols = COLS;
+      s = s.toUpperCase();
+      if (s.length > cols) return s.slice(0, cols);
+      return s.padEnd(cols, ' ');
+    }
+
+    function buildRow(rowEl, text) {
+      rowEl.innerHTML = '';
+      var tiles = [];
+      var isTitle = rowEl.classList.contains('split-board__row--title');
+      for (var i = 0; i < text.length; i++) {
+        var ch = text[i];
+        var tile = document.createElement('div');
+        tile.className = 'split-tile' + (isTitle ? ' split-tile--title' : '');
+        var flap = document.createElement('span');
+        flap.className = 'split-tile__flap';
+        flap.textContent = ch === ' ' ? '\u00A0' : ch;
+        tile.appendChild(flap);
+        rowEl.appendChild(tile);
+        tiles.push(flap);
+      }
+      return tiles;
+    }
+
+    function flipRow(tiles, newText) {
+      var chars = newText.split('');
+      tiles.forEach(function (flap, i) {
+        var ch = chars[i] || ' ';
+        flap.style.transform = 'rotateX(-90deg)';
+        setTimeout(function () {
+          flap.textContent = ch === ' ' ? '\u00A0' : ch;
+          flap.style.transform = 'rotateX(0deg)';
+        }, 130 + i * 10);
+      });
+    }
+
+    var titleRow = board.querySelector('[data-row="title"]');
+    buildRow(titleRow, pad('LEE HARVEY OSWALD', 18));
+
+    var identityRow = board.querySelector('[data-row="identity"]');
+    var identityWords = ['MISUNDERSTOOD', 'A HUSBAND & FATHER', 'A CIA AGENT?', 'ON TRIAL'];
+    var identityTiles = buildRow(identityRow, pad('I AM: ' + identityWords[0]));
+    var idIdx = 0;
     setInterval(function () {
-      var currentWord = rotatingWords[currentWordIndex];
-      currentWord.classList.remove('active');
-      currentWord.classList.add('exit-up');
+      idIdx = (idIdx + 1) % identityWords.length;
+      flipRow(identityTiles, pad('I AM: ' + identityWords[idIdx]));
+    }, 4000);
 
-      // Move to next word
-      currentWordIndex = (currentWordIndex + 1) % rotatingWords.length;
-      var nextWord = rotatingWords[currentWordIndex];
+    buildRow(board.querySelector('[data-row="spacer"]'), pad(''));
+    buildRow(board.querySelector('[data-row="defendant"]'), pad('DEFENDANT: OSWALD, LEE H.'));
+    buildRow(board.querySelector('[data-row="departs"]'), pad('DEPARTS: MAR 01 1965'));
+    buildRow(board.querySelector('[data-row="courtroom"]'), pad('COURTROOM: 102'));
 
-      // Small delay so exit animation plays before enter
-      setTimeout(function () {
-        currentWord.classList.remove('exit-up');
-        nextWord.classList.add('active');
-      }, reduced ? 0 : 300);
-
-    }, rotateInterval);
+    var statusRow = board.querySelector('[data-row="status"]');
+    var statusValues = ['ON TIME', 'BOARDING', 'IN SESSION'];
+    var statusTiles = buildRow(statusRow, pad('STATUS: ' + statusValues[0]));
+    var stIdx = 0;
+    setInterval(function () {
+      stIdx = (stIdx + 1) % statusValues.length;
+      flipRow(statusTiles, pad('STATUS: ' + statusValues[stIdx]));
+    }, 4600);
   }
 
+  document.addEventListener('DOMContentLoaded', initSplitBoard);
 
   // --- INTERSECTION OBSERVER FOR FADE-IN ANIMATIONS ---
   if (!reduced) {
@@ -184,7 +232,7 @@
     document.head.appendChild(fadeStyle);
 
     // Apply to key elements
-    var fadeTargets = document.querySelectorAll('.accused__content, .accused__tagline, .jury__heading, .jury__text, .section-title, .subscribe__heading, .format-card, .timeline__card, .quote-banner__text, .evidence-room__inner');
+    var fadeTargets = document.querySelectorAll('.accused__content, .jury__heading, .jury__text, .section-title, .subscribe__heading, .format-card, .timeline__card, .quote-banner__text, .evidence-room__inner');
     fadeTargets.forEach(function (el) { el.classList.add('fade-in'); });
 
     var fadeObserver = new IntersectionObserver(function (entries) {
