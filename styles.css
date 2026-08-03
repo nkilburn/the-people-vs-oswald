@@ -1309,6 +1309,16 @@ img {
   line-height: 1.5;
 }
 
+.summons__privacy-note {
+  font-family: var(--font-typewriter);
+  font-size: 0.58rem;
+  letter-spacing: 0.08em;
+  color: #8b7756;
+  text-align: center;
+  margin-top: 0.6rem;
+  line-height: 1.5;
+}
+
 /* =============================================
    FOOTER
    ============================================= */
