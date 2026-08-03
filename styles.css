@@ -1452,6 +1452,17 @@ img {
   color: var(--color-gray-300);
 }
 
+.footer__disclaimer a {
+  color: var(--color-red);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.footer__disclaimer a:hover,
+.footer__disclaimer a:focus-visible {
+  color: var(--color-red-bright);
+}
+
 /* --- Evidence Standard --- */
 .footer__evidence-standard {
   margin-bottom: 2rem;
